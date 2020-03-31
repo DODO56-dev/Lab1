@@ -1,0 +1,56 @@
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+long func(long* arr, int len)
+{
+	long min = 10;
+	for (int i = 0; i < len; i++)
+	{
+		if (*arr < min) { min = *arr; }
+		arr = arr + 1;
+	}
+	return min; 
+}
+float func(float* arr, int len)
+{
+	float min = 10;
+	for (int i = 0; i < len; i++)
+	{
+		if (*arr < min) { min = *arr; }
+		arr = arr + 1;
+	}
+	return min;
+}
+
+int main()
+{
+	const int len = 10;
+	long larr[len];
+	float farr[len], o = 0;
+	for(int i=0;i<len;i++)
+	{
+		larr[i] = 10 - (i + 1);
+		farr[i] = 10 - (o + 1);
+		o = o + 1.1;
+	}
+	for (int i = 0; i < len; i++)
+	{
+		printf("%5d", larr[i]);
+	}
+	printf("\n");
+	for (int i = 0; i < len; i++)
+	{
+		printf(" %2.2lf", farr[i]);
+	}
+	long* lp = &larr[0];
+	float* fp = &farr[0];
+	
+
+	float minfl = func(fp, len);
+	long minl = func(lp, len);
+	printf("\n Min long: %d\n Min float: %2.2lf", minl, minfl);
+
+	_getch();
+	return 0;
+}
